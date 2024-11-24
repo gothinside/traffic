@@ -31,7 +31,7 @@ app = FastAPI(lifespan=lifespan)
 
 app.include_router(router=traffic.router)
 
-
+#для локального запуска
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host=SERVER_HOST, port=int(SERVER_PORT))
