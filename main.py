@@ -34,4 +34,4 @@ app.include_router(router=traffic.router)
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host=SERVER_HOST, port=SERVER_PORT)
+    uvicorn.run(app, host=SERVER_HOST, port=int(SERVER_PORT))
