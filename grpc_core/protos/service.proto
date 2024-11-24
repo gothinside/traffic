@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package traffic;
+
+service Traffic{
+ rpc GetTraffic(TrafficRequest) returns (TrafficResponse) {}
+
+}
+
+message CustomerTrafficInfo{
+  string CustomerName = 1;
+  float TrafficsSum = 2;
+}
+
+message TrafficResponse{
+ repeated CustomerTrafficInfo Traffics = 1;
+}
+
+message TrafficRequest{
+  int32 CustomerID = 1;
+  string Before = 2;
+  string After = 3;
+  string IP = 4;
+}
