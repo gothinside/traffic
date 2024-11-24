@@ -7,6 +7,7 @@ import grpc_core.protos.service_pb2 as pb2
 from models import Traffic, Customers
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.asyncio import AsyncSession
+from settings import GRPC_PORT, GRPC_HOST
 
 class TrafficService(pb2_grpc.TrafficServicer):
     """
@@ -80,7 +81,7 @@ class Server:
         """
         self.server = aio.server(ThreadPoolExecutor(max_workers=10))
         pb2_grpc.add_TrafficServicer_to_server(TrafficService(db), self.server)
-        self.server.add_insecure_port("localhost:50051")
+        self.server.add_insecure_port(f'{GRPC_HOST}:{GRPC_PORT}')
 
     async def serve(self):
         """

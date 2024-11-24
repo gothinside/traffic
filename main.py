@@ -6,6 +6,7 @@ from grpc_core.server import Server
 from contextlib import asynccontextmanager
 import logging
 from api import traffic
+from settings import SERVER_HOST, SERVER_PORT
 
 logging.basicConfig(level=logging.INFO)
 
@@ -33,4 +34,4 @@ app.include_router(router=traffic.router)
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="localhost", port=8000)
+    uvicorn.run(app, host=SERVER_HOST, port=SERVER_PORT)
